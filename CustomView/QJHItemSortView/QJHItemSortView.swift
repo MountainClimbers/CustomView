@@ -14,6 +14,8 @@ protocol QJHItemSortViewDelegate {
      tagFlag 0 代表顺序 1 代表逆序
      */
     func ItemSortViewBtnTapFlag(viewTag:NSInteger, tagFlag:NSInteger) //点击事件
+    
+    
 }
 
 class QJHItemSortView: UIView {
