@@ -17,6 +17,10 @@
 		FCCB55C620D2431B0031E7DD /* UIView+FrameSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCB55C520D2431B0031E7DD /* UIView+FrameSwift.swift */; };
 		FCCB55C920D243410031E7DD /* QJHSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCB55C820D243410031E7DD /* QJHSelectView.swift */; };
 		FCCB55CB20D245460031E7DD /* UtilsMacro.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCB55CA20D245460031E7DD /* UtilsMacro.swift */; };
+		FCCB55CF20D268130031E7DD /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCB55CE20D268130031E7DD /* TableViewCell.swift */; };
+		FCCB55D120D268790031E7DD /* SelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCB55D020D268790031E7DD /* SelectViewController.swift */; };
+		FCCB55D320D268880031E7DD /* ItemSortViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCB55D220D268880031E7DD /* ItemSortViewController.swift */; };
+		FCCB55D520D269430031E7DD /* QJHItemSortView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCB55D420D269430031E7DD /* QJHItemSortView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +57,10 @@
 		FCCB55C520D2431B0031E7DD /* UIView+FrameSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+FrameSwift.swift"; sourceTree = "<group>"; };
 		FCCB55C820D243410031E7DD /* QJHSelectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QJHSelectView.swift; sourceTree = "<group>"; };
 		FCCB55CA20D245460031E7DD /* UtilsMacro.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilsMacro.swift; sourceTree = "<group>"; };
+		FCCB55CE20D268130031E7DD /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		FCCB55D020D268790031E7DD /* SelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectViewController.swift; sourceTree = "<group>"; };
+		FCCB55D220D268880031E7DD /* ItemSortViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSortViewController.swift; sourceTree = "<group>"; };
+		FCCB55D420D269430031E7DD /* QJHItemSortView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QJHItemSortView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,10 +111,14 @@
 		FCCB559520D242F20031E7DD /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
+				FCCB55D620D269490031E7DD /* QJHItemSortView */,
 				FCCB55C720D243200031E7DD /* QJHSelectView */,
 				FCCB55C420D2430F0031E7DD /* CommonTool */,
 				FCCB559620D242F20031E7DD /* AppDelegate.swift */,
+				FCCB55CE20D268130031E7DD /* TableViewCell.swift */,
 				FCCB559820D242F20031E7DD /* ViewController.swift */,
+				FCCB55D020D268790031E7DD /* SelectViewController.swift */,
+				FCCB55D220D268880031E7DD /* ItemSortViewController.swift */,
 				FCCB559A20D242F20031E7DD /* Main.storyboard */,
 				FCCB559D20D242F40031E7DD /* Assets.xcassets */,
 				FCCB559F20D242F40031E7DD /* LaunchScreen.storyboard */,
@@ -148,6 +160,14 @@
 				FCCB55C820D243410031E7DD /* QJHSelectView.swift */,
 			);
 			path = QJHSelectView;
+			sourceTree = "<group>";
+		};
+		FCCB55D620D269490031E7DD /* QJHItemSortView */ = {
+			isa = PBXGroup;
+			children = (
+				FCCB55D420D269430031E7DD /* QJHItemSortView.swift */,
+			);
+			path = QJHItemSortView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -284,7 +304,11 @@
 				FCCB55CB20D245460031E7DD /* UtilsMacro.swift in Sources */,
 				FCCB55C920D243410031E7DD /* QJHSelectView.swift in Sources */,
 				FCCB559920D242F20031E7DD /* ViewController.swift in Sources */,
+				FCCB55D120D268790031E7DD /* SelectViewController.swift in Sources */,
+				FCCB55CF20D268130031E7DD /* TableViewCell.swift in Sources */,
+				FCCB55D320D268880031E7DD /* ItemSortViewController.swift in Sources */,
 				FCCB559720D242F20031E7DD /* AppDelegate.swift in Sources */,
+				FCCB55D520D269430031E7DD /* QJHItemSortView.swift in Sources */,
 				FCCB55C620D2431B0031E7DD /* UIView+FrameSwift.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
