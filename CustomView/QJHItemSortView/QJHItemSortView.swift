@@ -54,6 +54,17 @@ class QJHItemSortView: UIView {
         }
     }
     
+    
+    var _titleFont: UIFont?
+    var titleFont: UIFont? {
+        get{
+            return _titleFont == nil ? _titleFont : UIFont.systemFont(13)
+        }
+        set(font) {
+            _titleFont = font
+        }
+    }
+    
     var _titleLabelSelectColor: UIColor?
     var titleLabelSelectColor: UIColor? {
         get{
@@ -99,7 +110,7 @@ class QJHItemSortView: UIView {
         for str in arr {
             let btn = UIButton()
             btn.frame = CGRect.init(x: (self.width) / CGFloat(arr.count) * CGFloat(count), y: 0, width: (self.width) / CGFloat(arr.count), height: self.height)
-            btn.titleLabel?.font = UIFont.systemFont(ofSize: 13)
+            btn.titleLabel?.font = self.titleFont
             btn.setTitle(str, for: .normal)
             let imageWidth = btn.imageView?.width
             let labelWidth = btn.titleLabel?.width
