@@ -19,7 +19,7 @@ protocol QJHItemSortViewDelegate {
 }
 
 class QJHItemSortView: UIView {
-
+    
     let constNum = 10
     
     var _delegate: QJHItemSortViewDelegate?
@@ -57,7 +57,7 @@ class QJHItemSortView: UIView {
     var _titleLabelSelectColor: UIColor?
     var titleLabelSelectColor: UIColor? {
         get{
-            return _titleLabelSelectColor != nil ? _titleLabelSelectColor : UIColor.blue
+            return _titleLabelSelectColor != nil ? _titleLabelSelectColor : UIColorFromRGB(rgbValue: 0x3399ff)
         }
         
         set(color){
@@ -68,7 +68,7 @@ class QJHItemSortView: UIView {
     var _titleLabelNormalColor: UIColor?
     var titleLabelNormalColor: UIColor? {
         get{
-            return _titleLabelNormalColor != nil ? _titleLabelNormalColor : UIColor.lightGray
+            return _titleLabelNormalColor != nil ? _titleLabelNormalColor : UIColorFromRGB(rgbValue: 0x333333)
         }
         
         set(color){
@@ -78,7 +78,7 @@ class QJHItemSortView: UIView {
     
     var stateFlag = [0,0,0] //操作flag
     
-    var imgArr = ["button_cancel","button_plus","icon_rz"]
+    var imgArr = ["button_px_normal","button_px_up","button_px_down"]
     
     private var _dataArr: [String]?
     
@@ -99,12 +99,12 @@ class QJHItemSortView: UIView {
         for str in arr {
             let btn = UIButton()
             btn.frame = CGRect.init(x: (self.width) / CGFloat(arr.count) * CGFloat(count), y: 0, width: (self.width) / CGFloat(arr.count), height: self.height)
-            btn.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+            btn.titleLabel?.font = UIFont.systemFont(ofSize: 13)
             btn.setTitle(str, for: .normal)
             let imageWidth = btn.imageView?.width
             let labelWidth = btn.titleLabel?.width
             btn.imageEdgeInsets = UIEdgeInsetsMake(0, labelWidth!, 0, -(labelWidth!))
-            btn.titleEdgeInsets = UIEdgeInsetsMake(0, -imageWidth!-35, 0, imageWidth!)
+            btn.titleEdgeInsets = UIEdgeInsetsMake(0, -imageWidth!-15, 0, imageWidth!)
             btn.tag = count + constNum
             btn.addTarget(self, action: #selector(self.btnTap(_:)), for: .touchUpInside)
             self.addSubview(btn)

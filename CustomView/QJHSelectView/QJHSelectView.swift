@@ -17,10 +17,12 @@ class QJHSelectView: UIView {
     
     let constNum1 = 10
     let constNum2 = 100
-
+    
+    let defaultLineViewHeight:CGFloat = 2 // 默认下划线高度
+    let defaultLineViewWidth:CGFloat = 2 // 默认下划线宽度
     
     let kBackGroudColor = UIColor.groupTableViewBackground
-
+    
     private var _normalColor: UIColor?
     private var _selectColor: UIColor?
     private var _dataArr:[String]?
@@ -32,13 +34,13 @@ class QJHSelectView: UIView {
     var normalColor:UIColor?{
         
         get{
-            return (_normalColor != nil) ? _normalColor! : UIColor.darkGray
+            return (_normalColor != nil) ? _normalColor! : UIColorFromRGB(rgbValue: 0x333333)
         }
         set(color){
             _normalColor = color
             
             refreshView(tag: self.selectIndex)
-
+            
         }
     }
     
@@ -47,7 +49,7 @@ class QJHSelectView: UIView {
     //MARK: - 下划线高度
     var lineViewHeight: CGFloat? {
         get{
-            return _lineViewHeight != nil ? _lineViewHeight : 4
+            return _lineViewHeight != nil ? _lineViewHeight : defaultLineViewHeight
         }
         set(height){
             _lineViewHeight = height
@@ -61,7 +63,7 @@ class QJHSelectView: UIView {
     //MARK: - 下划线长度
     var lineViewWidth: CGFloat? {
         get{
-            return _lineViewWidth != nil ? _lineViewWidth : (SCREEN_WIDTH)/CGFloat((self.dataArr?.count)!)/2.0
+            return _lineViewWidth != nil ? _lineViewWidth : (SCREEN_WIDTH)/CGFloat((self.dataArr?.count)!) - 40
         }
         set(width){
             
@@ -75,13 +77,13 @@ class QJHSelectView: UIView {
     var selectColor:UIColor?{
         
         get{
-            return (_selectColor != nil) ? _selectColor! : UIColor.red
+            return (_selectColor != nil) ? _selectColor! : UIColorFromRGB(rgbValue: 0x3399ff)
         }
         set(color){
             _selectColor = color
             
             refreshView(tag: self.selectIndex)
-
+            
         }
     }
     
@@ -139,14 +141,15 @@ class QJHSelectView: UIView {
             let btn = UIButton()
             btn.setTitle(str, for: .normal)
             btn.frame = CGRect.init(x: CGFloat(count) * halfWidth , y: 0, width: halfWidth, height: self.height)
-            btn.tag = count + constNum1
+            btn.tag = count + 10
+            btn.titleLabel?.font = UIFont.systemFont(ofSize: 15)
             btn.addTarget(self, action: #selector(self.btnTap(_:)), for: .touchUpInside)
             self.addSubview(btn)
             
             let vi = UIView()
             vi.frame = CGRect.init(x: btn.left , y: self.height - (self.lineViewHeight ?? 0), width: self.lineViewWidth ?? 0, height: self.lineViewHeight ?? 0)
             vi.centerX = btn.centerX
-            vi.tag = count + constNum2
+            vi.tag = count + 100
             self.addSubview(vi)
             
             if count == 0 {
@@ -159,7 +162,7 @@ class QJHSelectView: UIView {
             
             count = count + 1
         }
-
+        
     }
     
     func triggerButton(tag: NSInteger) {
@@ -191,7 +194,7 @@ class QJHSelectView: UIView {
     
     //MARK: - 更新UI
     func refreshView(tag:NSInteger) {
-      
+        
         for view in self.subviews {
             
             if view.isKind(of: UIButton.self){
@@ -201,7 +204,7 @@ class QJHSelectView: UIView {
                     (view as! UIButton).setTitleColor(self.normalColor, for: .normal)
                 }
             } else {
-                if view.tag == tag + (constNum2 - constNum1) {
+                if view.tag == tag + 90 {
                     view.backgroundColor = self.selectColor
                     view.isHidden = false
                 } else {
@@ -210,7 +213,7 @@ class QJHSelectView: UIView {
                     
                 }
             }
-
+            
         }
     }
     
@@ -218,7 +221,7 @@ class QJHSelectView: UIView {
         for view in self.subviews {
             
             if view.isKind(of: UIButton.self){
-          
+                
             } else {
                 view.height = height
                 view.top = self.height - height
@@ -230,14 +233,14 @@ class QJHSelectView: UIView {
     func refreshLineViewWidth(width: CGFloat) {
         
         for view in self.subviews {
-         
+            
             if view.isKind(of: UIButton.self){
                 
             } else {
                 
                 view.width = width
                 
-                let temp = self.viewWithTag(view.tag - (constNum2 - constNum1))
+                let temp = self.viewWithTag(view.tag - 90)
                 
                 if let temp = temp {
                     view.centerX = temp.centerX
