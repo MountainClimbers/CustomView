@@ -100,17 +100,6 @@ class QJHSelectView: UIView {
         }
     }
     
-    
-    var _titleFont: UIFont?
-    var titleFont: UIFont? {
-        get{
-            return _titleFont == nil ? _titleFont : UIFont.systemFont(13)
-        }
-        set(font) {
-            _titleFont = font
-        }
-    }
-    
     private var _delegate: QJHSelectViewDelegate?
     
     var delegate: QJHSelectViewDelegate?{
@@ -153,7 +142,7 @@ class QJHSelectView: UIView {
             btn.setTitle(str, for: .normal)
             btn.frame = CGRect.init(x: CGFloat(count) * halfWidth , y: 0, width: halfWidth, height: self.height)
             btn.tag = count + 10
-            btn.titleLabel?.font = self.titleFont
+            btn.titleLabel?.font = UIFont.systemFont(ofSize: 15)
             btn.addTarget(self, action: #selector(self.btnTap(_:)), for: .touchUpInside)
             self.addSubview(btn)
             
@@ -176,7 +165,14 @@ class QJHSelectView: UIView {
         
     }
     
-    func triggerButton(tag: NSInteger) {
+    //开放给外界修改UI
+    func refreshViewWithSelectIndex(tag:NSInteger) {
+        
+        self.refreshView(tag: tag + constNum1)
+        
+    }
+    
+    private func triggerButton(tag: NSInteger) {
         
         var view:UIView!
         
@@ -199,12 +195,12 @@ class QJHSelectView: UIView {
         
         //代理
         if delegate != nil {
-            delegate?.selectViewBtnTap(numTag)
+            delegate?.selectViewBtnTap(numTag-constNum1)
         }
     }
     
     //MARK: - 更新UI
-    func refreshView(tag:NSInteger) {
+    private func refreshView(tag:NSInteger) {
         
         for view in self.subviews {
             
@@ -228,7 +224,7 @@ class QJHSelectView: UIView {
         }
     }
     
-    func refreshLineViewHeight(height: CGFloat) {
+    private func refreshLineViewHeight(height: CGFloat) {
         for view in self.subviews {
             
             if view.isKind(of: UIButton.self){
@@ -241,7 +237,7 @@ class QJHSelectView: UIView {
         }
     }
     
-    func refreshLineViewWidth(width: CGFloat) {
+    private func refreshLineViewWidth(width: CGFloat) {
         
         for view in self.subviews {
             
@@ -259,5 +255,6 @@ class QJHSelectView: UIView {
             }
         }
     }
+    
 }
 
